@@ -3,8 +3,9 @@ package view;
 import dao.VendedorDAO;
 import model.Vendedor;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showInputDialog;
+import java.util.List;
+
+import static javax.swing.JOptionPane.*;
 
 public class MenuVendedor {
     public void menu() {
@@ -23,11 +24,20 @@ public class MenuVendedor {
 
             switch(opcao.toLowerCase()) {
                 case "inserir" -> inserir();
-                case "venda" -> new MenuVenda().menu();
+                case "listar" -> listar();
             }
         }
         while(!opcao.toLowerCase().equals("sair"));
 
+    }
+
+    private void listar() {
+        List<Vendedor> lista = new VendedorDAO().listar();
+        String aux = "";
+        for(Vendedor v : lista) {
+            aux += v.getId() + "    |   "  + v.getNome() + "\n";
+        }
+        showMessageDialog(null, aux);
     }
 
     private void inserir() {
