@@ -30,6 +30,16 @@ public class VendaDAO implements GenericDAO<Venda, Integer> {
         return List.of();
     }
 
+    @Override
+    public void atualizar(Venda entidade) {
+
+    }
+
+    @Override
+    public void excluir(Integer integer) {
+
+    }
+
     public List<Venda> relatorio() {
         List<Venda> lista = new ArrayList<>();
         String sql = "select v.nome, vd.total, vd.data " +
